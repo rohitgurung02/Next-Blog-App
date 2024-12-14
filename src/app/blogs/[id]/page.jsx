@@ -29,14 +29,16 @@ const page = ({ params }) => {
                 <button className='flex items-center gap-2 py-1 px-3 font-medium
                  sm:py-3 sm:px-6 border border-black shadow-[-3px_3px_0px_#000]'>Get Started <Image src={assets.arrow} /></button>
             </div>
-            <div className='text-center my-12'>
+            <div className='text-center my-6'>
                 <h1 className='text-2xl sm:text-4xl max-w-[700px] font-semibold mx-auto'>{data.title}</h1>
                 <Image src={data.author_img} width={60} height={60} alt=''
                     className='mx-auto mt-6 border border-white rounded-full' />
-                <p className='mt-1 pb-2 max-w-[700px] text-lg mx-auto'>{data.author}</p>
+                <p className=' pb-2 max-w-[700px] text-lg mx-auto'>{data.author}</p>
             </div>
-            <div className='mx-5 max-w-[800px] md:mx-auto mt-[100px] mb-10'>
-                <Image className='border-4 border-white' src={data.image} width={1280} height={720} alt='' />
+            </div>
+            <div>
+            <div className='mx-5 max-w-[800px] md:mx-auto  mb-10'>
+                <Image className='border-4 border-white' src={data.image} width={1280} height={600} alt='' />
                 <h1 className='my-8 text-[26px] font-semibold'>Introduction:</h1>
                 <p>{data.description}</p>
                 <h3 className='my-5 text-[18px] font-semibold'>Step:1 Self Reflection and Goal</h3>
