@@ -1,7 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Footer from '@/components/Footer'
 import { assets, blog_data } from '../../../../public/assets/assets'
+import Link from 'next/link'
 
 const page = ({ params }) => {
     const [data, setData] = useState(null)
@@ -21,7 +23,9 @@ const page = ({ params }) => {
     return (data ? <>
         <div className='bg-gray-200 py-5 px-5 md:px-12 lg:px-28'>
             <div className='flex justify-between items-center'>
+                <Link href='/'>
                 <Image src={assets.logo} width={80} className='w-[130px] sm:w-auto' />
+                </Link>
                 <button className='flex items-center gap-2 py-1 px-3 font-medium
                  sm:py-3 sm:px-6 border border-black shadow-[-3px_3px_0px_#000]'>Get Started <Image src={assets.arrow} /></button>
             </div>
@@ -40,6 +44,7 @@ const page = ({ params }) => {
                 <p className='my-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius unde similique eum dolores mollitia voluptatum consectetur perferendis libero autem consequatur reprehenderit adipisci, magni rem recusandae impedit in, quos laudantium vitae.</p>
             </div>
         </div>
+        <Footer />
     </> : <>
     </>
     )
