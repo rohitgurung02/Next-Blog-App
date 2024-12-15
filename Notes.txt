@@ -1,0 +1,13 @@
+Backend Notes:
+1. Axios -> For Network Request
+-> Install Axios -> npm install axios
+2. Toastify Package -> npm install react toastify 
+-> through install Toastify we will display errors, alert in good/beautiful way.
+3. Mongoose -> npm install mongoose 
+-> with the help of mongoose we can connect with Mongo DB database.
+4. After all the requirements open the Mongo DB Atlas on your browser
+
+UserName -> rohitgurung086
+Password -> gurungrohit
+mongodb+srv://rohitgurung086:<db_password>@cluster0.ffp4s.mongodb.net/
+
