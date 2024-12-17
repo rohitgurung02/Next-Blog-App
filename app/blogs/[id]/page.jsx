@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
-import { assets, blog_data } from '../../../../public/assets/assets'
+import { assets, blog_data } from '../../../public/assets/assets'
 import Link from 'next/link'
 
 const page = ({ params }) => {
