@@ -7,7 +7,8 @@ const layout = ({ children }) => {
     return (
         <>
             <div className='flex'> {/* Full-width and height container */}
-            <SideBar  />
+
+            <SideBar/>
             <div className='flex flex-col w-full'>
                 <div className='flex items-center justify-between w-full py-2
                      border-b border-black'>
