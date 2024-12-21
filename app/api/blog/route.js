@@ -10,8 +10,12 @@ const LoadDB = async () => {
 
 LoadDB();
 
+// we can get all content and images through images
 export async function GET(request) {
-  return NextResponse.json({ msg: "API working" });
+  const blogs = await BlogModel.find()
+  return NextResponse.json({blogs});
+
+  // return NextResponse.json({ msg: "API working" });
 }
 
 // In this method we can store the data into the DataBase.

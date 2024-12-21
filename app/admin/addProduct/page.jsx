@@ -55,6 +55,15 @@ const AddProduct = () => {
 
       if (response.data.success) {
         toast.success(response.data.msg);
+        // this code will reset (title, description, category, author, authorImg etc)
+        setImage(false);
+        setData({
+          title: "",
+          description: "",
+          category: "Startup",
+          author: "John Doe",
+          authorImg: "/author_img.png"
+        });
       } else {
         toast.error("Error: " + response.data.msg);
       }
