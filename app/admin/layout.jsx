@@ -2,11 +2,14 @@ import React from 'react';
 import SideBar from '@/components/AdminComponents/SideBar';
 import Image from 'next/image';
 import { assets } from '../../public/assets/assets';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const layout = ({ children }) => {
     return (
         <>
             <div className='flex'>
+                <ToastContainer />
                 <SideBar />
                 <div className='flex flex-col w-full'>
                     <div className='flex items-center justify-between w-full py-2
