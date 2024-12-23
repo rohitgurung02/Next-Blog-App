@@ -31,7 +31,7 @@ export async function POST(request) {
   const imageByteData = await image.arrayBuffer();
   // through this logic we can store the image in a (Public Folder);
   const buffer = Buffer.from(imageByteData);
-  const path = `./public/${timestamp}_${image.name}`;
+  const path = `./public/uploads/${timestamp}_${image.name}`;
   await writeFile(path, buffer);
 
   const imgUrl = `/${timestamp}_${image.name}`;
