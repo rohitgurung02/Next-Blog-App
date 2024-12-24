@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { assets, blog_data } from '../../public/assets/assets'
 import Link from 'next/link'
 
 const BlogItem = ({ title, description, category, image, id }) => {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true); // Will only run on the client side
+    }, []);
+
+    if (!isClient) return null; // Prevent rendering mismatch during SSR
+
     return (
         <div className='max-w-[330px] sm:max-w-[300px] bg-white border border-black hover:shadow-[-7px_7px_0px_#000]'>
             <Link href={`/blogs/${id}`}>

@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';  // <-- Import toast
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
-  const [image, setImage] = useState(false);
+  const [image, setImage] = useState(null);  // Change initial value to null
   const [data, setData] = useState(
     {
       title: "",
@@ -28,7 +28,7 @@ const AddProduct = () => {
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data => ({ ...data, [name]: value }))
+    setData(data => ({ ...data, [name]: value }));
   }
 
   // Handle image selection
@@ -38,7 +38,7 @@ const AddProduct = () => {
     }
   };
 
-  //Submit data logic with error handling
+  // Submit data logic with error handling
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -49,14 +49,15 @@ const AddProduct = () => {
       formData.append('category', data.category);
       formData.append('author', data.author);
       formData.append('authorImg', data.authorImg);
-      formData.append('image', image);
+      formData.append('image', image);  // Append the image file
+      formData.append('timestamp', Date.now()); // Add timestamp for unique filenames
 
       const response = await axios.post('/api/blog', formData);
 
       if (response.data.success) {
         toast.success(response.data.msg);
-        // this code will reset (title, description, category, author, authorImg etc)
-        setImage(false);
+        // Reset fields after successful submission
+        setImage(null);
         setData({
           title: "",
           description: "",
@@ -78,14 +79,14 @@ const AddProduct = () => {
       <form onSubmit={onSubmitHandler} className='px-5 sm:pt-2 sm:pl-8'>
         <p>Upload thumbnail</p>
         <label htmlFor="image" className='mt-3 cursor-pointer sm:w-[50px]'>
-          {/* Conditionally render the image only on the client-side */}
           {isClient && (
+            // Use a standard <img /> tag to show image preview
             <Image
-              src={!image ? assets.upload_area : URL.createObjectURL(image)}
+              src={!image ? assets.upload_area : URL.createObjectURL(image)}  // Use URL.createObjectURL for image preview
+              alt="upload_image"
               width={140}
               height={90}
               className='mt-2'
-              alt="upload_image"
             />
           )}
         </label>

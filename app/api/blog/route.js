@@ -12,7 +12,7 @@ LoadDB();
 
 // we can get all content and images through images
 export async function GET(request) {
-  const blogs = await BlogModel.find()
+  const blogs = await BlogModel.find({})
   return NextResponse.json({blogs});
 
   // return NextResponse.json({ msg: "API working" });
@@ -26,7 +26,7 @@ export async function POST(request) {
   // We can get the (Date and Current Time)
   const timestamp = Date.now();
 
-  const image = formData.get("image");
+  const image = formData.get('image');
   // We should get the Image as (Byte Data)
   const imageByteData = await image.arrayBuffer();
   // through this logic we can store the image in a (Public Folder);
@@ -34,7 +34,7 @@ export async function POST(request) {
   const path = `./public/uploads/${timestamp}_${image.name}`;
   await writeFile(path, buffer);
 
-  const imgUrl = `/${timestamp}_${image.name}`;
+  const imgUrl = `/uploads/${timestamp}_${image.name}`;
  
   const blogData = {
     title: `${formData.get('title')}`,
@@ -42,8 +42,8 @@ export async function POST(request) {
     category: `${formData.get('category')}`,
     author: `${formData.get('author')}`,
     imageUrl: `${imgUrl}`, // Assuming this is the correct field for the image URL
+    image: `${imgUrl}`,
     authorImg: `${formData.get('authorImg')}`, // Assuming this is correct
-    image: `${formData.get('image')}`
   }
 
   // Save to MongoDB
